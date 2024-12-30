@@ -110,3 +110,9 @@ body {
     color: #b30000;
   }
   
+  .StyleContainerasksCheck{
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    height: 200px ;
+  }

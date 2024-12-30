@@ -3,10 +3,11 @@ let containerIdTask = document.getElementById("containerIdTasks");
 let button = document.getElementById("button");
 let styleContainer = document.getElementsByClassName("StyleContainerTasks");
 let top1 = document.getElementById("Top1");
+let containerTasksCheck = document.getElementById("tasksCheck");
 let i = 0
 function creatAsk(){
   i++
-    let task = `<div class="feedback">
+    let task = `<div id="containerTask${i}" class="feedback">
     <div class="checkStyle">
       <input onclick="CheckEffect(${i})" type="checkbox" id="feedback-checkbox"/>
       </div>
@@ -23,6 +24,7 @@ function creatAsk(){
     let tempContainer = document.createElement("div");
 tempContainer.innerHTML = task;
     top1.appendChild(tempContainer);
+
     }
     bar.value=""  
     containerIdTask.style.maxHeight = '200px';
@@ -33,10 +35,20 @@ button.addEventListener("click",creatAsk)
 
 function CheckEffect(i){
   let Check1= document.getElementById("Check"+i);
+  let ConatinerTask = document.getElementById("containerTask"+i)
+ let checkStyle =  Check1.getAttribute('class');
+  if (checkStyle == "nameTaskStyle"){
+    containerIdTask.appendChild(ConatinerTask);
+    Check1.classList.remove('nameTaskStyle');
+    Check1.classList.add('TaskDone');
+    
+  }else{
+    Check1.classList.remove('TaskDone');
+    Check1.classList.add('nameTaskStyle');
+    containerIdTask.removeChild(ConatinerTask);
+    top1.appendChild(ConatinerTask)
+  }
   
-  console.log(Check1)
-  
-  Check1.classList.add("TaskDone");
 
 }
 
