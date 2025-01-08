@@ -86,6 +86,7 @@ body {
   }
   .TaskDone{
     text-decoration: line-through;
+    word-break: break-all;
     opacity: 0.3;
   }
 

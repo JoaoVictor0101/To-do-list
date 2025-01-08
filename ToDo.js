@@ -46,25 +46,22 @@ function CheckEffect(i){
     Check1.classList.add('TaskDone');
     
   }else{
-
     Check1.classList.remove('TaskDone');
     Check1.classList.add('nameTaskStyle');
     containerIdTask.removeChild(ConatinerTask);
     TasksBack.appendChild(ConatinerTask);
-    
   }
-  
-
 }
 
- function remove (i){ 
- let removeTask = document.getElementById("divTask"+i);
- top1.removeChild(removeTask);
- 
- remove2()
-  }
+ function remove (i){
+  let divTask = document.getElementById('divTask'+i)
+  let ConatinerTask = document.getElementById("containerTask"+i)
+ if (ConatinerTask.parentElement === divTask){
+   ConatinerTask.remove()
+ } else if (ConatinerTask.parentElement === containerIdTask){
+  ConatinerTask.remove()
+ }else{
+  ConatinerTask.remove()
+ }
 
-  function remove2(){
-    let ConatinerTask = document.getElementById("containerTask"+i);
-    TasksBack.removeChild(ConatinerTask);
   }
