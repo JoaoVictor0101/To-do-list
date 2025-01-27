@@ -13,7 +13,7 @@ function creatAsk(){
       <input onclick="CheckEffect(${i})" type="checkbox" id="feedback-checkbox"/>
       </div>
       <div id="Check${i}" class="nameTaskStyle">
-      <label for="feedback-checkbx">${bar.value}</label>
+      <label id="NameTask" for="feedback-checkbx">${bar.value}</label>
       </div>
       <div class="deleteStyle">
     <button class="delete-button" onclick="remove(${i})">🗑️</button>
@@ -23,16 +23,19 @@ function creatAsk(){
       alert("digite uma tarefa")
     }else{
     let tempContainer = document.createElement("div");
-    tempContainer.id="divTask"+i
+    tempContainer.id="divTask"
 tempContainer.innerHTML = task;
     top1.appendChild(tempContainer);
     
-    }
-    bar.value=""  
+    } 
+    bar.value = ""
+    
+    saveIntoTheLocalStorage()
     containerIdTask.style.maxHeight = '200px';
     containerIdTask.style.overflow = 'auto';
     
 }
+
 button.addEventListener("click",creatAsk)
 
 function CheckEffect(i){
@@ -52,6 +55,18 @@ function CheckEffect(i){
     TasksBack.appendChild(ConatinerTask);
   }
 }
+
+function saveIntoTheLocalStorage(){
+  let taskArray = [];
+  top1.querySelectorAll("#NameTask").forEach(function (item){
+    taskArray.push(item.textContent)
+  })
+  localStorage.setItem("Tasks",JSON.stringify(taskArray))
+
+}
+
+
+
 
  function remove (i){
   let divTask = document.getElementById('divTask'+i)
