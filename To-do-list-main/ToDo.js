@@ -96,8 +96,13 @@ let buttonCheck = document.getElementById("buttonCheck"+o);
 
 buttonCheck.addEventListener("click",function(){
   let ParenTask = this.parentElement;
+  let classParent = ParenTask.getAttribute('class');
+  console.log(classParent)
+  if (classParent == "TaskStyle"){
   buttontask(ParenTask.id)
-
+  }else{
+    backChack (ParenTask.id)
+  }
 //  top1.removeChild()
   
 })
@@ -114,6 +119,13 @@ function buttontask (taskId){
   let getId = document.getElementById(taskId);
   console.log(getId)
   containerIdTask.appendChild(getId)
+  getId.classList="TaskStyle2"
+}
+
+function backChack (TaskId){
+  let getId2 = document.getElementById(TaskId);
+  TasksBack.appendChild(getId2)
+
 }
 
   /*
